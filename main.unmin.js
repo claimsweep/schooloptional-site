@@ -347,7 +347,7 @@ if (quizContainer) {
 
         html += '<div class="quiz-result-actions">';
         if (totalScore > 10) {
-            html += '<a href="https://app.bluefolder.app" class="btn btn-primary btn-lg">Try Blue Folder Free</a>';
+            html += '<a href="/resources" class="btn btn-primary btn-lg">See My Toolkit</a>';
         }
         html += '<a href="/articles" class="btn btn-secondary btn-lg">Read the Research</a>';
         html += '</div>';
