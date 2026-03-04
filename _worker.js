@@ -83,14 +83,16 @@ async function handleReact(request, env) {
         }
         const body = await request.json();
         const id = parseInt(body.id, 10);
+        const undo = body.undo === true;
         if (!id || id < 1) {
             return new Response(JSON.stringify({ error: 'Invalid ID.' }), {
                 status: 400, headers: JSON_HEADERS
             });
         }
-        const result = await db.prepare(
-            "UPDATE wall_submissions SET reactions = reactions + 1 WHERE id = ? AND status = 'approved'"
-        ).bind(id).run();
+        const sql = undo
+            ? "UPDATE wall_submissions SET reactions = MAX(0, reactions - 1) WHERE id = ? AND status = 'approved'"
+            : "UPDATE wall_submissions SET reactions = reactions + 1 WHERE id = ? AND status = 'approved'";
+        const result = await db.prepare(sql).bind(id).run();
         if (result.meta.changes === 0) {
             return new Response(JSON.stringify({ error: 'Story not found.' }), {
                 status: 404, headers: JSON_HEADERS

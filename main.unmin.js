@@ -587,6 +587,11 @@ if (quizContainer) {
         var arr = getReacted();
         if (arr.indexOf(id) === -1) { arr.push(id); localStorage.setItem(REACTED_KEY, JSON.stringify(arr)); }
     }
+    function removeReacted(id) {
+        var arr = getReacted();
+        var idx = arr.indexOf(id);
+        if (idx !== -1) { arr.splice(idx, 1); localStorage.setItem(REACTED_KEY, JSON.stringify(arr)); }
+    }
     function hasReacted(id) { return getReacted().indexOf(id) !== -1; }
 
     // Wall grid
@@ -621,30 +626,46 @@ if (quizContainer) {
         }
     }
 
-    // Reaction click handler (event delegation)
+    // Reaction click handler (event delegation) - toggle on/off
     if (wallGrid) {
         wallGrid.addEventListener('click', function(e) {
             var btn = e.target.closest('.wall-react-btn');
-            if (!btn || btn.classList.contains('reacted')) return;
+            if (!btn) return;
 
             var id = parseInt(btn.dataset.id, 10);
             if (!id) return;
 
-            btn.classList.add('reacted');
             var countEl = btn.querySelector('.react-count');
             var current = parseInt(countEl.textContent, 10) || 0;
-            countEl.textContent = current + 1;
-            saveReacted(id);
+            var alreadyReacted = btn.classList.contains('reacted');
 
-            fetch('/api/react', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: id })
-            }).then(function(res) { return res.json(); }).then(function(data) {
-                if (data.ok && data.reactions !== undefined) {
-                    countEl.textContent = data.reactions;
-                }
-            }).catch(function() {});
+            if (alreadyReacted) {
+                btn.classList.remove('reacted');
+                countEl.textContent = Math.max(0, current - 1);
+                removeReacted(id);
+                fetch('/api/react', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id, undo: true })
+                }).then(function(res) { return res.json(); }).then(function(data) {
+                    if (data.ok && data.reactions !== undefined) {
+                        countEl.textContent = data.reactions;
+                    }
+                }).catch(function() {});
+            } else {
+                btn.classList.add('reacted');
+                countEl.textContent = current + 1;
+                saveReacted(id);
+                fetch('/api/react', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: id })
+                }).then(function(res) { return res.json(); }).then(function(data) {
+                    if (data.ok && data.reactions !== undefined) {
+                        countEl.textContent = data.reactions;
+                    }
+                }).catch(function() {});
+            }
         });
     }
 
