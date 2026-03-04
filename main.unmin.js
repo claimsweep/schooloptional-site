@@ -599,13 +599,19 @@ if (quizContainer) {
         const label = roleLabel(story.role);
         const count = story.reactions || 0;
         const reacted = hasReacted(story.id);
+        var shareText = story.content.length > 200 ? story.content.substring(0, 200) + '...' : story.content;
         return '<div class="wall-card" id="wall-card-' + story.id + '">' +
             (label ? '<div class="wall-card-role">' + label + '</div>' : '') +
             '<div class="wall-card-text">' + story.content.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</div>' +
             '<div class="wall-card-footer">' +
-                '<button class="wall-react-btn' + (reacted ? ' reacted' : '') + '" data-id="' + story.id + '">' +
-                    '<span class="react-emoji">&#x1F631;</span> <span class="react-count">' + count + '</span>' +
-                '</button>' +
+                '<div class="wall-card-actions">' +
+                    '<button class="wall-react-btn' + (reacted ? ' reacted' : '') + '" data-id="' + story.id + '">' +
+                        '<span class="react-emoji">&#x1F631;</span> <span class="react-count">' + count + '</span>' +
+                    '</button>' +
+                    '<button class="wall-share-btn" data-text="' + shareText.replace(/"/g, '&quot;') + '" title="Share this story">' +
+                        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>' +
+                    '</button>' +
+                '</div>' +
                 '<span class="wall-card-time">' + timeAgo(story.created_at) + '</span>' +
             '</div>' +
             '</div>';
@@ -626,9 +632,31 @@ if (quizContainer) {
         }
     }
 
+    // Share click handler
+    if (wallGrid) {
+        wallGrid.addEventListener('click', function(e) {
+            var shareBtn = e.target.closest('.wall-share-btn');
+            if (!shareBtn) return;
+            var text = shareBtn.dataset.text;
+            var shareData = {
+                title: 'School Optional - The Wall',
+                text: '"' + text + '"',
+                url: 'https://schooloptional.com/wall'
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(function() {});
+            } else {
+                var tweetText = encodeURIComponent('"' + (text.length > 240 ? text.substring(0, 240) + '...' : text) + '"');
+                var tweetUrl = encodeURIComponent('https://schooloptional.com/wall');
+                window.open('https://twitter.com/intent/tweet?text=' + tweetText + '&url=' + tweetUrl, '_blank', 'width=550,height=420');
+            }
+        });
+    }
+
     // Reaction click handler (event delegation) - toggle on/off
     if (wallGrid) {
         wallGrid.addEventListener('click', function(e) {
+            if (e.target.closest('.wall-share-btn')) return;
             var btn = e.target.closest('.wall-react-btn');
             if (!btn) return;
 
@@ -739,8 +767,15 @@ if (quizContainer) {
             const res = await fetch('/api/stories');
             if (res.ok) {
                 const data = await res.json();
-                if (data.length > 0) { allStories = data; }
-                else { allStories = seedStories; }
+                if (data.length > 0) {
+                    // Merge API stories with seeds — API first, then fill with seeds
+                    var apiIds = {};
+                    data.forEach(function(s) { apiIds[s.id] = true; });
+                    var extraSeeds = seedStories.filter(function(s) { return !apiIds[s.id]; });
+                    allStories = data.concat(extraSeeds);
+                } else {
+                    allStories = seedStories;
+                }
             } else {
                 allStories = seedStories;
             }
