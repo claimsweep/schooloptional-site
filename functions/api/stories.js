@@ -21,7 +21,7 @@ export async function onRequestGet(context) {
         }
 
         const { results } = await db.prepare(
-            "SELECT id, content, role, created_at FROM wall_submissions WHERE status = 'approved' ORDER BY approved_at DESC LIMIT 100"
+            "SELECT id, content, role, created_at, reactions FROM wall_submissions WHERE status = 'approved' ORDER BY reactions DESC, approved_at DESC LIMIT 100"
         ).all();
 
         return new Response(JSON.stringify(results), {

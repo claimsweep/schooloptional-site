@@ -505,31 +505,31 @@ if (quizContainer) {
     }
 
     const seedStories = [
-        { id: 1, content: "My son came home with bruises three times in one month. Each time I reported it, they said they would 'look into it.' By the fourth time, I pulled him out. Best decision I ever made.", role: "parent", created_at: daysAgo(1) },
-        { id: 2, content: "I had a panic attack in 8th grade math class. The teacher told me to stop being dramatic and sit down. I did not tell anyone about my anxiety for three more years.", role: "student", created_at: daysAgo(2) },
-        { id: 3, content: "My daughter was reading chapter books at 5. They made her sit through phonics lessons for two years because 'that is the curriculum.' She went from loving books to hating school.", role: "parent", created_at: daysAgo(1) },
-        { id: 4, content: "I taught 4th grade for 12 years. I left because I spent more time on standardized test prep than actual teaching. The kids deserved better. I deserved better.", role: "teacher", created_at: daysAgo(3) },
-        { id: 5, content: "We had 3 minutes between classes and needed a hall pass to use the bathroom. I got a UTI in 7th grade because I was too afraid to ask.", role: "student", created_at: daysAgo(4) },
-        { id: 6, content: "It took 14 months to get my son's IEP evaluated. Fourteen months of him falling further behind while the district dragged their feet.", role: "parent", created_at: daysAgo(2) },
-        { id: 7, content: "I had 20 minutes for lunch. By the time I got through the line, I had 8 minutes to eat. I threw away more food than I ate for four years.", role: "student", created_at: daysAgo(5) },
-        { id: 8, content: "I found out my daughter was being pulled out of class for 'behavioral issues' three weeks after it started. Nobody called me. Nobody emailed. She was sitting in the hallway alone.", role: "parent", created_at: daysAgo(3) },
-        { id: 9, content: "A student threw a chair at me in my second year. Administration told me to 'build a better relationship with him.' No suspension. No consequences. I quit that June.", role: "teacher", created_at: daysAgo(6) },
-        { id: 10, content: "I wanted to write a poem for my English assignment. My teacher said it had to be a five-paragraph essay. I was 16 and already learning that creativity did not matter.", role: "student", created_at: daysAgo(4) },
-        { id: 11, content: "The school counselor suggested we medicate our 6-year-old because he could not sit still for 6 hours. He was six. He was supposed to move.", role: "parent", created_at: daysAgo(1) },
-        { id: 12, content: "I ate lunch in a bathroom stall for all of 9th grade. Not one teacher noticed. Not one adult asked where I was.", role: "student", created_at: daysAgo(7) },
-        { id: 13, content: "My kid tested gifted in 2nd grade. Their 'gifted program' was extra worksheets. Same classroom. Same pace. Just more busywork.", role: "parent", created_at: daysAgo(5) },
-        { id: 14, content: "I spent $2,400 of my own money on classroom supplies last year. When I asked for a budget increase, they said there was no room. The superintendent got a $15,000 raise.", role: "teacher", created_at: daysAgo(8) },
-        { id: 15, content: "Every Sunday night I could not sleep because of the dread. I was 10 years old. No child should dread Monday that much.", role: "student", created_at: daysAgo(3) },
-        { id: 16, content: "There was a lockdown drill where the kids had to hide under desks and be silent for 45 minutes. My 7-year-old asked me that night if someone was going to shoot her at school.", role: "parent", created_at: daysAgo(2) },
-        { id: 17, content: "I got dress coded for wearing a tank top in 95-degree weather. The boy next to me was shirtless at recess. I was 11 and already learning the rules were different for me.", role: "student", created_at: daysAgo(6) },
-        { id: 18, content: "My son's third grade teacher told me he was 'on level.' I tested him privately. He was reading at a first grade level. They just kept passing him along.", role: "parent", created_at: daysAgo(4) },
-        { id: 19, content: "I cried in my car every morning before work for the last three months of my teaching career. I loved the kids. I could not survive the system.", role: "teacher", created_at: daysAgo(9) },
-        { id: 20, content: "I got detention for being 2 minutes late to class because I was helping a kid who fell in the hallway. Zero tolerance meant zero common sense.", role: "student", created_at: daysAgo(5) },
-        { id: 21, content: "My daughter's 'friends' at school made a group chat specifically to exclude her. When I told the school, they said it happened off campus so it was not their problem.", role: "parent", created_at: daysAgo(3) },
-        { id: 22, content: "My son told his teacher he was having a hard time at home. She said 'everyone has bad days' and moved on. He was trying to tell her something real.", role: "parent", created_at: daysAgo(7) },
-        { id: 23, content: "I finished every assignment early and then sat there. For years. No extra books. No enrichment. Just sit there and be quiet. They taught me that being smart was boring.", role: "student", created_at: daysAgo(2) },
-        { id: 24, content: "A 9-year-old cried during state testing because she thought she would be held back if she failed. She was shaking. I was not allowed to comfort her. Proctoring rules.", role: "teacher", created_at: daysAgo(10) },
-        { id: 25, content: "The school told me my kid was fine. My gut said otherwise. I pulled her out mid-year. Within two months of homeschooling, she was a completely different child. Trust your instincts.", role: "parent", created_at: daysAgo(1) }
+        { id: 1, content: "My son came home with bruises three times in one month. Each time I reported it, they said they would 'look into it.' By the fourth time, I pulled him out. Best decision I ever made.", role: "parent", created_at: daysAgo(1), reactions: 0 },
+        { id: 2, content: "I had a panic attack in 8th grade math class. The teacher told me to stop being dramatic and sit down. I did not tell anyone about my anxiety for three more years.", role: "student", created_at: daysAgo(2), reactions: 0 },
+        { id: 3, content: "My daughter was reading chapter books at 5. They made her sit through phonics lessons for two years because 'that is the curriculum.' She went from loving books to hating school.", role: "parent", created_at: daysAgo(1), reactions: 0 },
+        { id: 4, content: "I taught 4th grade for 12 years. I left because I spent more time on standardized test prep than actual teaching. The kids deserved better. I deserved better.", role: "teacher", created_at: daysAgo(3), reactions: 0 },
+        { id: 5, content: "We had 3 minutes between classes and needed a hall pass to use the bathroom. I got a UTI in 7th grade because I was too afraid to ask.", role: "student", created_at: daysAgo(4), reactions: 0 },
+        { id: 6, content: "It took 14 months to get my son's IEP evaluated. Fourteen months of him falling further behind while the district dragged their feet.", role: "parent", created_at: daysAgo(2), reactions: 0 },
+        { id: 7, content: "I had 20 minutes for lunch. By the time I got through the line, I had 8 minutes to eat. I threw away more food than I ate for four years.", role: "student", created_at: daysAgo(5), reactions: 0 },
+        { id: 8, content: "I found out my daughter was being pulled out of class for 'behavioral issues' three weeks after it started. Nobody called me. Nobody emailed. She was sitting in the hallway alone.", role: "parent", created_at: daysAgo(3), reactions: 0 },
+        { id: 9, content: "A student threw a chair at me in my second year. Administration told me to 'build a better relationship with him.' No suspension. No consequences. I quit that June.", role: "teacher", created_at: daysAgo(6), reactions: 0 },
+        { id: 10, content: "I wanted to write a poem for my English assignment. My teacher said it had to be a five-paragraph essay. I was 16 and already learning that creativity did not matter.", role: "student", created_at: daysAgo(4), reactions: 0 },
+        { id: 11, content: "The school counselor suggested we medicate our 6-year-old because he could not sit still for 6 hours. He was six. He was supposed to move.", role: "parent", created_at: daysAgo(1), reactions: 0 },
+        { id: 12, content: "I ate lunch in a bathroom stall for all of 9th grade. Not one teacher noticed. Not one adult asked where I was.", role: "student", created_at: daysAgo(7), reactions: 0 },
+        { id: 13, content: "My kid tested gifted in 2nd grade. Their 'gifted program' was extra worksheets. Same classroom. Same pace. Just more busywork.", role: "parent", created_at: daysAgo(5), reactions: 0 },
+        { id: 14, content: "I spent $2,400 of my own money on classroom supplies last year. When I asked for a budget increase, they said there was no room. The superintendent got a $15,000 raise.", role: "teacher", created_at: daysAgo(8), reactions: 0 },
+        { id: 15, content: "Every Sunday night I could not sleep because of the dread. I was 10 years old. No child should dread Monday that much.", role: "student", created_at: daysAgo(3), reactions: 0 },
+        { id: 16, content: "There was a lockdown drill where the kids had to hide under desks and be silent for 45 minutes. My 7-year-old asked me that night if someone was going to shoot her at school.", role: "parent", created_at: daysAgo(2), reactions: 0 },
+        { id: 17, content: "I got dress coded for wearing a tank top in 95-degree weather. The boy next to me was shirtless at recess. I was 11 and already learning the rules were different for me.", role: "student", created_at: daysAgo(6), reactions: 0 },
+        { id: 18, content: "My son's third grade teacher told me he was 'on level.' I tested him privately. He was reading at a first grade level. They just kept passing him along.", role: "parent", created_at: daysAgo(4), reactions: 0 },
+        { id: 19, content: "I cried in my car every morning before work for the last three months of my teaching career. I loved the kids. I could not survive the system.", role: "teacher", created_at: daysAgo(9), reactions: 0 },
+        { id: 20, content: "I got detention for being 2 minutes late to class because I was helping a kid who fell in the hallway. Zero tolerance meant zero common sense.", role: "student", created_at: daysAgo(5), reactions: 0 },
+        { id: 21, content: "My daughter's 'friends' at school made a group chat specifically to exclude her. When I told the school, they said it happened off campus so it was not their problem.", role: "parent", created_at: daysAgo(3), reactions: 0 },
+        { id: 22, content: "My son told his teacher he was having a hard time at home. She said 'everyone has bad days' and moved on. He was trying to tell her something real.", role: "parent", created_at: daysAgo(7), reactions: 0 },
+        { id: 23, content: "I finished every assignment early and then sat there. For years. No extra books. No enrichment. Just sit there and be quiet. They taught me that being smart was boring.", role: "student", created_at: daysAgo(2), reactions: 0 },
+        { id: 24, content: "A 9-year-old cried during state testing because she thought she would be held back if she failed. She was shaking. I was not allowed to comfort her. Proctoring rules.", role: "teacher", created_at: daysAgo(10), reactions: 0 },
+        { id: 25, content: "The school told me my kid was fine. My gut said otherwise. I pulled her out mid-year. Within two months of homeschooling, she was a completely different child. Trust your instincts.", role: "parent", created_at: daysAgo(1), reactions: 0 }
     ];
 
     // Toast ticker
@@ -578,13 +578,31 @@ if (quizContainer) {
         showToast();
     }
 
+    // Reactions localStorage
+    var REACTED_KEY = 'wall_reacted';
+    function getReacted() {
+        try { return JSON.parse(localStorage.getItem(REACTED_KEY) || '[]'); } catch(e) { return []; }
+    }
+    function saveReacted(id) {
+        var arr = getReacted();
+        if (arr.indexOf(id) === -1) { arr.push(id); localStorage.setItem(REACTED_KEY, JSON.stringify(arr)); }
+    }
+    function hasReacted(id) { return getReacted().indexOf(id) !== -1; }
+
     // Wall grid
     function renderCard(story) {
         const label = roleLabel(story.role);
+        const count = story.reactions || 0;
+        const reacted = hasReacted(story.id);
         return '<div class="wall-card" id="wall-card-' + story.id + '">' +
             (label ? '<div class="wall-card-role">' + label + '</div>' : '') +
             '<div class="wall-card-text">' + story.content.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</div>' +
-            '<div class="wall-card-time">' + timeAgo(story.created_at) + '</div>' +
+            '<div class="wall-card-footer">' +
+                '<button class="wall-react-btn' + (reacted ? ' reacted' : '') + '" data-id="' + story.id + '">' +
+                    '<span class="react-emoji">&#x1F631;</span> <span class="react-count">' + count + '</span>' +
+                '</button>' +
+                '<span class="wall-card-time">' + timeAgo(story.created_at) + '</span>' +
+            '</div>' +
             '</div>';
     }
 
@@ -601,6 +619,33 @@ if (quizContainer) {
         if (loadMoreBtn) {
             loadMoreBtn.style.display = displayedCount < allStories.length ? 'inline-flex' : 'none';
         }
+    }
+
+    // Reaction click handler (event delegation)
+    if (wallGrid) {
+        wallGrid.addEventListener('click', function(e) {
+            var btn = e.target.closest('.wall-react-btn');
+            if (!btn || btn.classList.contains('reacted')) return;
+
+            var id = parseInt(btn.dataset.id, 10);
+            if (!id) return;
+
+            btn.classList.add('reacted');
+            var countEl = btn.querySelector('.react-count');
+            var current = parseInt(countEl.textContent, 10) || 0;
+            countEl.textContent = current + 1;
+            saveReacted(id);
+
+            fetch('/api/react', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: id })
+            }).then(function(res) { return res.json(); }).then(function(data) {
+                if (data.ok && data.reactions !== undefined) {
+                    countEl.textContent = data.reactions;
+                }
+            }).catch(function() {});
+        });
     }
 
     // Form
