@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Is Homeschooling Right for Your Family? - School Optional</title>
-    <meta name="description" content="Take our free 2-minute quiz to find out if homeschooling is the right fit for your family. Based on real data and research.">
-    <meta name="keywords" content="homeschool quiz, should I homeschool, is homeschooling right for me, homeschool assessment, homeschool readiness">
-    <link rel="canonical" href="https://schooloptional.com/quiz">
+    <title>The Wall - Anonymous Public School Stories - School Optional</title>
+    <meta name="description" content="Real stories from real parents, students, and teachers. Anonymous. Unfiltered. This is what the system does not want you to see.">
+    <meta name="keywords" content="public school stories, school horror stories, why I left public school, homeschool stories, anonymous school experiences">
+    <link rel="canonical" href="https://schooloptional.com/wall">
 
-    <meta property="og:title" content="Is Homeschooling Right for Your Family? - School Optional">
-    <meta property="og:description" content="Take our free 2-minute quiz to find out if homeschooling is the right fit for your family.">
-    <meta property="og:url" content="https://schooloptional.com/quiz">
+    <meta property="og:title" content="The Wall - Anonymous Public School Stories">
+    <meta property="og:description" content="Real stories from real parents, students, and teachers. Anonymous. Unfiltered.">
+    <meta property="og:url" content="https://schooloptional.com/wall">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="School Optional">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Is Homeschooling Right for Your Family? - School Optional">
-    <meta name="twitter:description" content="Free 2-minute quiz based on real data and research.">
+    <meta name="twitter:title" content="The Wall - Anonymous Public School Stories">
+    <meta name="twitter:description" content="Real stories from real parents, students, and teachers. Anonymous. Unfiltered.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +26,9 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Is Homeschooling Right for Your Family?",
-        "description": "Interactive quiz to help families assess if homeschooling is the right choice.",
-        "url": "https://schooloptional.com/quiz",
+        "name": "The Wall - Anonymous Public School Stories",
+        "description": "Real anonymous stories from parents, students, and teachers about their public school experiences.",
+        "url": "https://schooloptional.com/wall",
         "publisher": { "@type": "Organization", "name": "School Optional" }
     }
     </script>
@@ -38,7 +38,7 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://schooloptional.com" },
-            { "@type": "ListItem", "position": 2, "name": "Quiz" }
+            { "@type": "ListItem", "position": 2, "name": "The Wall" }
         ]
     }
     </script>
@@ -66,29 +66,66 @@
         <a href="/take-action" class="btn btn-sm nav-cta">Take Action</a>
     </div>
 
-    <section class="article-hero">
+    <section class="wall-hero">
         <div class="container-narrow">
             <div class="breadcrumb">
                 <a href="/">Home</a><span class="sep">/</span>
-                <span>Quiz</span>
+                <span>The Wall</span>
             </div>
-            <h1>Is <span class="highlight">homeschooling</span> right for your family?</h1>
-            <p class="hero-sub" style="margin-top: 1rem; color: var(--text-secondary); font-size: 1.125rem; max-width: 600px;">10 questions. 2 minutes. An honest assessment based on real research - not a sales pitch.</p>
+            <h1>What happened <span class="highlight">to us.</span></h1>
+            <p class="wall-hero-sub">These are real stories from real parents, students, and teachers. Anonymous. Unfiltered. This is what the system does not want you to see.</p>
+            <div class="wall-ticker">
+                <div class="wall-toast-container"></div>
+            </div>
         </div>
     </section>
 
     <section class="section">
-        <div class="quiz-container">
-            <!-- Quiz rendered by JS -->
+        <div class="container-narrow">
+            <div class="wall-form-card">
+                <h2>Share your story</h2>
+                <p class="wall-form-sub">No name. No email. No account. Just the truth.</p>
+                <form id="wall-form" autocomplete="off">
+                    <textarea id="wall-input" placeholder="What happened to you or your child?" minlength="50" maxlength="1000" required></textarea>
+                    <div class="wall-form-meta">
+                        <div class="wall-roles">
+                            <button type="button" class="wall-role" data-role="parent">Parent</button>
+                            <button type="button" class="wall-role" data-role="student">Former Student</button>
+                            <button type="button" class="wall-role" data-role="teacher">Teacher</button>
+                        </div>
+                        <span class="wall-char-count"><span id="wall-chars">0</span> / 1000</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg wall-submit">Share Your Story Anonymously</button>
+                    <div class="wall-form-note">Stories appear on the wall after a brief review.</div>
+                </form>
+                <div class="wall-form-success" style="display: none;">
+                    <div class="wall-success-icon">&#10003;</div>
+                    <h3>Your story has been submitted.</h3>
+                    <p>It will appear on the wall after review. Thank you for sharing.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="cta-banner">
+    <section class="section">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-eyebrow">The Wall</span>
+                <h2 class="section-title">Every story matters.</h2>
+            </div>
+            <div class="wall-grid" id="wall-grid"></div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-secondary" id="wall-load-more" style="display: none;">Load More Stories</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner reveal">
         <div class="container">
             <div class="cta-box">
-                <h2>Ready to start?</h2>
-                <p>Check out the tools I use and the resources that made the transition easier than I ever expected.</p>
-                <a href="/resources" class="btn btn-primary btn-lg">See My Toolkit &rarr;</a>
+                <h2>Ready to make the change?</h2>
+                <p>You have read their stories. Now write your own. Start with the steps that make it real.</p>
+                <a href="/take-action" class="btn btn-primary btn-lg">Take Action &rarr;</a>
             </div>
         </div>
     </section>
@@ -113,6 +150,7 @@
                         <a href="/about">About</a>
                         <a href="/articles">All Articles</a>
                         <a href="/resources">Resources</a>
+                        <a href="/wall">The Wall</a>
                         <a href="/take-action">Take Action</a>
                     </div>
                     <div class="footer-col">
