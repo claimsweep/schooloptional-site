@@ -37,6 +37,21 @@ export async function onRequestGet(context) {
     }
 }
 
+// Blocklist - submissions containing these go to pending for manual review
+const BLOCKLIST = [
+    'fuck', 'shit', 'ass', 'bitch', 'cunt', 'dick', 'nigger', 'nigga', 'faggot', 'fag',
+    'retard', 'whore', 'slut', 'kike', 'spic', 'chink', 'wetback', 'tranny',
+    'kill yourself', 'kys', 'shoot up', 'bomb threat', 'gonna shoot', 'bring a gun',
+    'http://', 'https://', '.com/', '.net/', 'bit.ly', 'tinyurl',
+    'buy now', 'click here', 'free money', 'crypto', 'bitcoin', 'onlyfans',
+    'viagra', 'cialis', 'casino', 'gambling'
+];
+
+function isFlagged(text) {
+    const lower = text.toLowerCase();
+    return BLOCKLIST.some(word => lower.includes(word));
+}
+
 export async function onRequestPost(context) {
     try {
         const db = context.env.DB;
@@ -57,9 +72,19 @@ export async function onRequestPost(context) {
             });
         }
 
-        await db.prepare(
-            "INSERT INTO wall_submissions (content, role) VALUES (?, ?)"
-        ).bind(content, role).run();
+        const flagged = isFlagged(content);
+        const status = flagged ? 'pending' : 'approved';
+        const approvedAt = flagged ? null : "datetime('now')";
+
+        if (flagged) {
+            await db.prepare(
+                "INSERT INTO wall_submissions (content, role, status) VALUES (?, ?, 'pending')"
+            ).bind(content, role).run();
+        } else {
+            await db.prepare(
+                "INSERT INTO wall_submissions (content, role, status, approved_at) VALUES (?, ?, 'approved', datetime('now'))"
+            ).bind(content, role).run();
+        }
 
         return new Response(JSON.stringify({ ok: true }), {
             headers: { 'Content-Type': 'application/json' }
